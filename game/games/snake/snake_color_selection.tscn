@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://games/snake/snake_color_selection.gd" type="Script" id=1]
 [ext_resource path="res://games/snake/color_schemes/rainbow.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://games/snake/color_schemes/firefly.png" type="Texture" id=4]
 [ext_resource path="res://games/snake/color_schemes/classic.png" type="Texture" id=5]
 [ext_resource path="res://shared/fonts/press_start2p/press_start2p_regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://games/snake/modus_select.gd" type="Script" id=7]
 
 [sub_resource type="StyleBoxEmpty" id=9]
 
@@ -54,161 +55,254 @@ anchor_bottom = 1.0
 theme = SubResource( 6 )
 color = Color( 0.2, 0.2, 0.501961, 1 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="CC" type="CenterContainer" parent="."]
+margin_right = 1023.0
+margin_bottom = 600.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 304.0
+[node name="HBoxContainer" type="HBoxContainer" parent="CC"]
+margin_left = 179.0
 margin_top = 140.0
-margin_right = 720.0
+margin_right = 843.0
 margin_bottom = 460.0
+
+[node name="CenterContainer2" type="CenterContainer" parent="CC/HBoxContainer"]
+margin_right = 416.0
+margin_bottom = 320.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CC/HBoxContainer/CenterContainer2"]
+margin_right = 416.0
+margin_bottom = 320.0
 custom_constants/separation = 16
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer"]
 margin_right = 416.0
 margin_bottom = 16.0
 text = "T_SNAKE_COLOR_SCHEME"
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer"]
 margin_top = 32.0
 margin_right = 416.0
 margin_bottom = 92.0
 size_flags_horizontal = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer"]
 margin_right = 416.0
 margin_bottom = 60.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer/MarginContainer"]
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 408.0
 margin_bottom = 52.0
 custom_constants/separation = 8
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 margin_right = 400.0
 margin_bottom = 16.0
 text = "T_SNAKE_COLOR_CLASSIC"
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 margin_top = 24.0
 margin_right = 400.0
 margin_bottom = 44.0
 texture = ExtResource( 5 )
 
-[node name="ButtonClassic" type="Button" parent="CenterContainer/VBoxContainer/PanelContainer"]
+[node name="ButtonClassic" type="Button" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer"]
 margin_right = 416.0
 margin_bottom = 60.0
 
-[node name="PanelContainer2" type="PanelContainer" parent="CenterContainer/VBoxContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer"]
 margin_top = 108.0
 margin_right = 416.0
 margin_bottom = 168.0
 size_flags_horizontal = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/PanelContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer2"]
 margin_right = 416.0
 margin_bottom = 60.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer2/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer2/MarginContainer"]
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 408.0
 margin_bottom = 52.0
 custom_constants/separation = 8
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer"]
 margin_right = 400.0
 margin_bottom = 16.0
 text = "T_SNAKE_COLOR_FIREFLY"
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer"]
 margin_top = 24.0
 margin_right = 400.0
 margin_bottom = 44.0
 texture = ExtResource( 4 )
 
-[node name="ButtonFirefly" type="Button" parent="CenterContainer/VBoxContainer/PanelContainer2"]
+[node name="ButtonFirefly" type="Button" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer2"]
 margin_right = 416.0
 margin_bottom = 60.0
 
-[node name="PanelContainer3" type="PanelContainer" parent="CenterContainer/VBoxContainer"]
+[node name="PanelContainer3" type="PanelContainer" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer"]
 margin_top = 184.0
 margin_right = 416.0
 margin_bottom = 244.0
 size_flags_horizontal = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/PanelContainer3"]
+[node name="MarginContainer" type="MarginContainer" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer3"]
 margin_right = 416.0
 margin_bottom = 60.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer3/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer3/MarginContainer"]
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 408.0
 margin_bottom = 52.0
 custom_constants/separation = 8
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer3/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer3/MarginContainer/VBoxContainer"]
 margin_right = 400.0
 margin_bottom = 16.0
 text = "T_SNAKE_COLOR_MATCHSTICK"
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/PanelContainer3/MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer3/MarginContainer/VBoxContainer"]
 margin_top = 24.0
 margin_right = 400.0
 margin_bottom = 44.0
 texture = ExtResource( 3 )
 
-[node name="ButtonMatchstick" type="Button" parent="CenterContainer/VBoxContainer/PanelContainer3"]
+[node name="ButtonMatchstick" type="Button" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer3"]
 margin_right = 416.0
 margin_bottom = 60.0
 
-[node name="PanelContainer4" type="PanelContainer" parent="CenterContainer/VBoxContainer"]
+[node name="PanelContainer4" type="PanelContainer" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer"]
 margin_top = 260.0
 margin_right = 416.0
 margin_bottom = 320.0
 size_flags_horizontal = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer/PanelContainer4"]
+[node name="MarginContainer" type="MarginContainer" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer4"]
 margin_right = 416.0
 margin_bottom = 60.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer4/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer4/MarginContainer"]
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 408.0
 margin_bottom = 52.0
 custom_constants/separation = 8
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer4/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer4/MarginContainer/VBoxContainer"]
 margin_right = 400.0
 margin_bottom = 16.0
 text = "T_SNAKE_COLOR_RAINBOW"
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/PanelContainer4/MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer4/MarginContainer/VBoxContainer"]
 margin_top = 24.0
 margin_right = 400.0
 margin_bottom = 44.0
 texture = ExtResource( 2 )
 
-[node name="ButtonRainbow" type="Button" parent="CenterContainer/VBoxContainer/PanelContainer4"]
+[node name="ButtonRainbow" type="Button" parent="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer4"]
 margin_right = 416.0
 margin_bottom = 60.0
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/PanelContainer/ButtonClassic" to="." method="_on_ButtonClassic_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/PanelContainer2/ButtonFirefly" to="." method="_on_ButtonFirefly_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/PanelContainer3/ButtonMatchstick" to="." method="_on_ButtonMatchstick_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/PanelContainer4/ButtonRainbow" to="." method="_on_ButtonRainbow_pressed"]
+[node name="CCSelectModus" type="CenterContainer" parent="CC/HBoxContainer"]
+margin_left = 420.0
+margin_right = 664.0
+margin_bottom = 320.0
+
+[node name="VBoxContainerSelectModus" type="VBoxContainer" parent="CC/HBoxContainer/CCSelectModus"]
+margin_top = 80.0
+margin_right = 244.0
+margin_bottom = 240.0
+custom_constants/separation = 16
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CC/HBoxContainer/CCSelectModus/VBoxContainerSelectModus"]
+margin_right = 244.0
+margin_bottom = 16.0
+text = "SELECT_MODUS"
+
+[node name="PanelContainer" type="PanelContainer" parent="CC/HBoxContainer/CCSelectModus/VBoxContainerSelectModus"]
+margin_top = 32.0
+margin_right = 244.0
+margin_bottom = 64.0
+size_flags_horizontal = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="CC/HBoxContainer/CCSelectModus/VBoxContainerSelectModus/PanelContainer"]
+margin_right = 244.0
+margin_bottom = 32.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CC/HBoxContainer/CCSelectModus/VBoxContainerSelectModus/PanelContainer/MarginContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 236.0
+margin_bottom = 24.0
+custom_constants/separation = 8
+
+[node name="CheckBoxClassic" type="CheckBox" parent="CC/HBoxContainer/CCSelectModus/VBoxContainerSelectModus/PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 228.0
+margin_bottom = 16.0
+text = "SNAKE_CLASSIC"
+
+[node name="PanelContainer2" type="PanelContainer" parent="CC/HBoxContainer/CCSelectModus/VBoxContainerSelectModus"]
+margin_left = 8.0
+margin_top = 80.0
+margin_right = 236.0
+margin_bottom = 112.0
+size_flags_horizontal = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="CC/HBoxContainer/CCSelectModus/VBoxContainerSelectModus/PanelContainer2"]
+margin_right = 228.0
+margin_bottom = 32.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CC/HBoxContainer/CCSelectModus/VBoxContainerSelectModus/PanelContainer2/MarginContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 220.0
+margin_bottom = 24.0
+custom_constants/separation = 8
+
+[node name="CheckBoxNormal" type="CheckBox" parent="CC/HBoxContainer/CCSelectModus/VBoxContainerSelectModus/PanelContainer2/MarginContainer/VBoxContainer"]
+margin_right = 212.0
+margin_bottom = 16.0
+text = "SNAKE_NORMAL"
+
+[node name="PanelContainer3" type="PanelContainer" parent="CC/HBoxContainer/CCSelectModus/VBoxContainerSelectModus"]
+margin_left = 24.0
+margin_top = 128.0
+margin_right = 220.0
+margin_bottom = 160.0
+size_flags_horizontal = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="CC/HBoxContainer/CCSelectModus/VBoxContainerSelectModus/PanelContainer3"]
+margin_right = 196.0
+margin_bottom = 32.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CC/HBoxContainer/CCSelectModus/VBoxContainerSelectModus/PanelContainer3/MarginContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 188.0
+margin_bottom = 24.0
+custom_constants/separation = 8
+
+[node name="CheckBoxHard" type="CheckBox" parent="CC/HBoxContainer/CCSelectModus/VBoxContainerSelectModus/PanelContainer3/MarginContainer/VBoxContainer"]
+margin_right = 180.0
+margin_bottom = 16.0
+text = "SNAKE_HARD"
+
+[connection signal="pressed" from="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer/ButtonClassic" to="." method="_on_ButtonClassic_pressed"]
+[connection signal="pressed" from="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer2/ButtonFirefly" to="." method="_on_ButtonFirefly_pressed"]
+[connection signal="pressed" from="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer3/ButtonMatchstick" to="." method="_on_ButtonMatchstick_pressed"]
+[connection signal="pressed" from="CC/HBoxContainer/CenterContainer2/VBoxContainer/PanelContainer4/ButtonRainbow" to="." method="_on_ButtonRainbow_pressed"]
+[connection signal="pressed" from="CC/HBoxContainer/CCSelectModus/VBoxContainerSelectModus/PanelContainer/MarginContainer/VBoxContainer/CheckBoxClassic" to="CC/HBoxContainer/CCSelectModus/VBoxContainerSelectModus" method="_on_CheckBoxClassic_pressed"]
+[connection signal="pressed" from="CC/HBoxContainer/CCSelectModus/VBoxContainerSelectModus/PanelContainer2/MarginContainer/VBoxContainer/CheckBoxNormal" to="CC/HBoxContainer/CCSelectModus/VBoxContainerSelectModus" method="_on_CheckBoxNormal_pressed"]
+[connection signal="pressed" from="CC/HBoxContainer/CCSelectModus/VBoxContainerSelectModus/PanelContainer3/MarginContainer/VBoxContainer/CheckBoxHard" to="CC/HBoxContainer/CCSelectModus/VBoxContainerSelectModus" method="_on_CheckBoxHard_pressed"]

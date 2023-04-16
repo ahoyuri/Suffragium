@@ -4,7 +4,8 @@ var _main
 
 
 func _ready():
-	$CenterContainer/VBoxContainer/PanelContainer/ButtonClassic.grab_focus()
+	pass
+	#$CenterContainer/VBoxContainer/PanelContainer/ButtonClassic.grab_focus()
 
 
 func set_main(main):
@@ -12,6 +13,7 @@ func set_main(main):
 
 
 func _select_color_scheme(color_scheme: int):
+	_main._selected_mode = $CC/HBoxContainer/CCSelectModus/VBoxContainerSelectModus.modus_id
 	_main.set_color_scheme(color_scheme)
 	queue_free()
 
